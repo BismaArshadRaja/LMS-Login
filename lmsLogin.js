@@ -3,7 +3,7 @@
 // @namespace    http://tampermonkey.net/
 // @version      1.1
 // @description  Save multiple VULMS accounts and login with one click
-// @author       LTStore
+// @author       Bisma
 // @match        https://vulms.vu.edu.pk/LMS_LP.aspx*
 // @grant        GM_setValue
 // @grant        GM_getValue
@@ -176,8 +176,7 @@ closeBtn.addEventListener("click", () => {
       return;
     }
 
-    await sleep(300); // allow inputs to render
-
+    await sleep(300); //wait for page to load
     const user = document.querySelector("#txtUsername, input[type='text']");
     const pass = document.querySelector("#txtPassword, input[type='password']");
     const btn  = document.querySelector("#btnLogin, button[type='submit']");
