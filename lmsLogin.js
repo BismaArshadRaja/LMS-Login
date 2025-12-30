@@ -124,8 +124,8 @@
     #saveBtn { background: #16a34a; margin: 0 12px 12px; width: calc(100% - 24px); }
 
     .btn-icon {
-      width: 14px;
-      height: 14px;
+      width: 20px;
+      height: 20px;
       fill: currentColor;
     }
 
