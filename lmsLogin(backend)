@@ -1,0 +1,68 @@
+// ==UserScript==
+// @name         Lms login(backend)
+// @namespace    http://tampermonkey.net/
+// @version      2026-01-04
+// @description  try to take over the world!
+// @match        https://vulms.vu.edu.pk/*
+// @icon         data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==
+// @grant        none
+// ==/UserScript==
+
+(function () {
+    'use strict';
+/*add btn css*/
+var style = document.createElement("style");
+style.innerHTML = `
+#vuBtn {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background-color: blue;
+    color: white;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+#vuBtn:hover {
+    background-color: darkblue;
+}
+`;
+
+    var btn = document.createElement("button");
+btn.innerText = "Send Request";
+btn.id = "vuBtn";
+document.body.appendChild(btn);
+document.head.appendChild(style);
+btn.onclick = function () {
+/*url*/
+   var url = "https://vulms.vu.edu.pk/LMS_LP.aspx";
+/*form data*/
+   var data =
+     "__VIEWSTATEGENERATOR=4C74136D" +
+     "&txtStudentID=bc220414168" +
+     "&txtPassword=Mynewpass@123" +
+     "&ibtnLogin=Sign+In" +
+     "&action=beta_LMS";
+/*request*/
+fetch(url, {
+   method: "POST",
+     headers: {
+      "Content-Type": "application/x-www-form-urlencoded"
+   },
+     body: data
+  })
+  .then(function (response) {
+     return response.text();
+  })
+   .then(function (result) {
+     console.log("Response:", result);
+     alert("Request sent. Check console.");
+  })
+   .catch(function (error) {
+     console.log("Error:", error);
+     alert("Request failed.");
+  });
+};
+
+})();
